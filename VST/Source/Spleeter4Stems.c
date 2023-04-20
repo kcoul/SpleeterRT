@@ -5,6 +5,12 @@
 #include <float.h>
 #include "codelet.h"
 #include "Spleeter4Stems.h"
+
+#ifndef _WIN32 
+  #include <sys/stat.h>
+  #include <sys/types.h>
+#endif
+
 unsigned int LLIntegerLog2(unsigned int v)
 {
 	unsigned int i = 0;

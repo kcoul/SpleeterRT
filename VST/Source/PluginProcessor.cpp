@@ -16,18 +16,26 @@ const float paramValueRange[PARAM__MAX][5] =
 {
 	{ 0.0f, 3.0f, 0.0f, 1.0f, 1.0f }
 };
-#include <userenv.h>  // GetUserProfileDirectory() (link with userenv)
-const int BUFLEN = 512;
-BOOL getCurrentUserDir(char* buf, DWORD buflen)
+#ifdef _WIN32
+    #include <userenv.h>  // GetUserProfileDirectory() (link with userenv)
+    const int BUFLEN = 512;
+    BOOL getCurrentUserDir(char* buf, DWORD buflen)
+    {
+        HANDLE hToken;
+        if (!OpenProcessToken(GetCurrentProcess(), TOKEN_READ, &hToken))
+            return FALSE;
+        if (!GetUserProfileDirectory(hToken, buf, &buflen))
+            return FALSE;
+        CloseHandle(hToken);
+        return TRUE;
+    }
+#else
+bool getCurrentUserDirUnix(char* buf, int buflen)
 {
-	HANDLE hToken;
-	if (!OpenProcessToken(GetCurrentProcess(), TOKEN_READ, &hToken))
-		return FALSE;
-	if (!GetUserProfileDirectory(hToken, buf, &buflen))
-		return FALSE;
-	CloseHandle(hToken);
-	return TRUE;
+    buf = getenv("HOME");
+    return true;
 }
+#endif
 class MS5_1AI : public AudioProcessor, public AudioProcessorValueTreeState::Listener
 {
 public:
@@ -43,7 +51,11 @@ public:
 		fs = 44100;
 		order = 0;
 		char dir[512];
+#ifdef _WIN32
 		getCurrentUserDir(dir, 512);
+#else
+        getCurrentUserDirUnix(dir, 512);
+#endif
 		for (i = 0; i < 4; i++)
 			coeffProvPtr[i] = malloc(getCoeffSize());
 		// Load coeff
@@ -87,9 +99,10 @@ public:
 		setLatencySamples(16384);
 		msr = 0;
 	}
-	MS5_1AI::~MS5_1AI()
+	~MS5_1AI()
 	{
-		Spleeter4StemsFree(msr);
+        if(msr)
+            Spleeter4StemsFree(msr);
 		if (coeffProvPtr[0])
 		{
 			for (int i = 0; i < 4; i++)
@@ -101,7 +114,7 @@ public:
 	{
 		std::vector<std::unique_ptr<RangedAudioParameter>> parameters;
 		for (int i = 0; i < PARAM__MAX; i++)
-			parameters.push_back(std::make_unique<AudioParameterFloat>(paramName[i][0], paramName[i][0], NormalisableRange<float>(paramValueRange[i][0], paramValueRange[i][1], paramValueRange[i][4]), paramValueRange[i][2]));
+        parameters.push_back(std::make_unique<AudioParameterFloat>(ParameterID{paramName[i][0], 1}, paramName[i][0], NormalisableRange<float>(paramValueRange[i][0], paramValueRange[i][1], paramValueRange[i][4]), paramValueRange[i][2]));
 		return { parameters.begin(), parameters.end() };
 	}
 	void parameterChanged(const String& parameter, float newValue) override
