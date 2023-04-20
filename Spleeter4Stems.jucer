@@ -4,34 +4,34 @@
               pluginFormats="buildVST3" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="Cu4AfW" name="Spleeter4Stems">
     <GROUP id="{7EAFACF6-5A38-1F10-043E-34E3E75DB818}" name="Source">
-      <FILE id="BER4Qm" name="PluginProcessor.cpp" compile="1" resource="0"
-            file="Source/PluginProcessor.cpp"/>
-      <FILE id="Lx48tf" name="cpthread.c" compile="1" resource="0" file="Source/cpthread.c"/>
-      <FILE id="MZTvZU" name="cpthread.h" compile="0" resource="0" file="Source/cpthread.h"/>
-      <FILE id="MXvc3p" name="gemm.c" compile="1" resource="0" file="Source/gemm.c"/>
-      <FILE id="gT40Ce" name="im2col_dilated.c" compile="1" resource="0"
-            file="Source/im2col_dilated.c"/>
-      <FILE id="nrM0dK" name="spleeter.c" compile="1" resource="0" file="Source/spleeter.c"/>
-      <FILE id="vUb7EI" name="spleeter.h" compile="0" resource="0" file="Source/spleeter.h"/>
-      <FILE id="fxy57S" name="Spleeter4Stems.c" compile="1" resource="0"
-            file="Source/Spleeter4Stems.c"/>
-      <FILE id="fOOTWK" name="Spleeter4Stems.h" compile="0" resource="0"
-            file="Source/Spleeter4Stems.h"/>
-      <FILE id="Hd9E9g" name="stb_image_write.h" compile="0" resource="0"
-            file="Source/stb_image_write.h"/>
-      <FILE id="r8j3Nf" name="codelet.c" compile="1" resource="0" file="Source/codelet.c"/>
-      <FILE id="OhBrx7" name="codelet.h" compile="0" resource="0" file="Source/codelet.h"/>
-      <FILE id="VPaafo" name="conv_util.h" compile="0" resource="0" file="Source/conv_util.h"/>
+      <FILE id="U1h7bW" name="codelet.c" compile="1" resource="0" file="VST/Source/codelet.c"/>
+      <FILE id="SsXiEg" name="codelet.h" compile="0" resource="0" file="VST/Source/codelet.h"/>
+      <FILE id="InArEW" name="conv_util.h" compile="0" resource="0" file="VST/Source/conv_util.h"/>
+      <FILE id="uTibe6" name="cpthread.c" compile="1" resource="0" file="VST/Source/cpthread.c"/>
+      <FILE id="dvo4lU" name="cpthread.h" compile="0" resource="0" file="VST/Source/cpthread.h"/>
+      <FILE id="JJIMdu" name="gemm.c" compile="1" resource="0" file="VST/Source/gemm.c"/>
+      <FILE id="bhsS7Q" name="im2col_dilated.c" compile="1" resource="0"
+            file="VST/Source/im2col_dilated.c"/>
+      <FILE id="vCGWaG" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="VST/Source/PluginProcessor.cpp"/>
+      <FILE id="RjaExw" name="spleeter.c" compile="1" resource="0" file="VST/Source/spleeter.c"/>
+      <FILE id="i3P1Mf" name="spleeter.h" compile="0" resource="0" file="VST/Source/spleeter.h"/>
+      <FILE id="s9FC8g" name="Spleeter4Stems.c" compile="1" resource="0"
+            file="VST/Source/Spleeter4Stems.c"/>
+      <FILE id="jTEZI2" name="Spleeter4Stems.h" compile="0" resource="0"
+            file="VST/Source/Spleeter4Stems.h"/>
+      <FILE id="sijmYd" name="stb_image_write.h" compile="0" resource="0"
+            file="VST/Source/stb_image_write.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
     <VS2019 targetFolder="Builds/VisualStudio2019" extraDefs="MSVC=TRUE"
             extraCompilerFlags="-I&quot;%MKLROOT%&quot;\include" externalLibraries="userenv.lib&#10;mkl_core.lib&#10;mkl_intel_lp64.lib&#10;mkl_sequential.lib">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" headerPath="&quot;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2019.5.281\windows\mkl\include&quot;&#10;&quot;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2019.5.281\windows\mkl\lib\intel64&quot;"
-                       libraryPath="&quot;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2019.5.281\windows\mkl\include&quot;&#10;&quot;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2019.5.281\windows\mkl\lib\intel64&quot;"/>
-        <CONFIGURATION isDebug="0" name="Release" headerPath="&quot;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2019.5.281\windows\mkl\include&quot;&#10;&quot;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2019.5.281\windows\mkl\lib\intel64&quot;"
-                       libraryPath="&quot;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2019.5.281\windows\mkl\include&quot;&#10;&quot;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2019.5.281\windows\mkl\lib\intel64&quot;"/>
+        <CONFIGURATION isDebug="1" name="Debug" headerPath="&quot;C:\Program Files (x86)\Intel\oneAPI\mkl\2023.1.0\include&quot;"
+                       libraryPath="&quot;C:\Program Files (x86)\Intel\oneAPI\mkl\latest\lib\intel64&quot;"/>
+        <CONFIGURATION isDebug="0" name="Release" headerPath="&quot;C:\Program Files (x86)\Intel\oneAPI\mkl\2023.1.0\include&quot;"
+                       libraryPath="&quot;C:\Program Files (x86)\Intel\oneAPI\mkl\latest\lib\intel64&quot;"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_basics" path="../../../splitter/vst_related/JUCE/5/5.4.7/modules"/>
