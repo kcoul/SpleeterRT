@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="bxzlY4" name="Spleeter4Stems" projectType="audioplug" pluginChannelConfigs="{2,8}"
-              pluginFormats="buildLV2,buildVST3" displaySplashScreen="1" jucerFormatVersion="1">
+              pluginFormats="buildVST3" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="Cu4AfW" name="Spleeter4Stems">
     <GROUP id="{7EAFACF6-5A38-1F10-043E-34E3E75DB818}" name="Source">
       <FILE id="U1h7bW" name="codelet.c" compile="1" resource="0" file="VST/Source/codelet.c"/>
@@ -50,6 +50,31 @@
         <MODULEPATH id="juce_opengl" path="../../../splitter/vst_related/JUCE/5/5.4.7/modules"/>
       </MODULEPATHS>
     </VS2019>
+    <VS2022 targetFolder="Builds/VisualStudio2022" extraDefs="MSVC=TRUE"
+            extraCompilerFlags="-I&quot;%MKLROOT%&quot;\include" externalLibraries="userenv.lib&#10;mkl_core.lib&#10;mkl_intel_lp64.lib&#10;mkl_sequential.lib">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" headerPath="&quot;C:\Program Files (x86)\Intel\oneAPI\mkl\2023.1.0\include&quot;"
+                       libraryPath="&quot;C:\Program Files (x86)\Intel\oneAPI\mkl\latest\lib\intel64&quot;"/>
+        <CONFIGURATION isDebug="0" name="Release" headerPath="&quot;C:\Program Files (x86)\Intel\oneAPI\mkl\2023.1.0\include&quot;"
+                       libraryPath="&quot;C:\Program Files (x86)\Intel\oneAPI\mkl\latest\lib\intel64&quot;"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="C:\Users\zendev\repos\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_devices" path="C:\Users\zendev\repos\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_formats" path="C:\Users\zendev\repos\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="C:\Users\zendev\repos\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_processors" path="C:\Users\zendev\repos\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_utils" path="C:\Users\zendev\repos\JUCE\modules"/>
+        <MODULEPATH id="juce_core" path="C:\Users\zendev\repos\JUCE\modules"/>
+        <MODULEPATH id="juce_cryptography" path="C:\Users\zendev\repos\JUCE\modules"/>
+        <MODULEPATH id="juce_data_structures" path="C:\Users\zendev\repos\JUCE\modules"/>
+        <MODULEPATH id="juce_events" path="C:\Users\zendev\repos\JUCE\modules"/>
+        <MODULEPATH id="juce_graphics" path="C:\Users\zendev\repos\JUCE\modules"/>
+        <MODULEPATH id="juce_gui_basics" path="C:\Users\zendev\repos\JUCE\modules"/>
+        <MODULEPATH id="juce_gui_extra" path="C:\Users\zendev\repos\JUCE\modules"/>
+        <MODULEPATH id="juce_opengl" path="C:\Users\zendev\repos\JUCE\modules"/>
+      </MODULEPATHS>
+    </VS2022>
   </EXPORTFORMATS>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
