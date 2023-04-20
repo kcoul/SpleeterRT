@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="bxzlY4" name="Spleeter4Stems" projectType="audioplug" pluginChannelConfigs="{2,8}"
-              pluginFormats="buildVST3" displaySplashScreen="1" jucerFormatVersion="1">
+              pluginFormats="buildLV2,buildVST3" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="Cu4AfW" name="Spleeter4Stems">
     <GROUP id="{7EAFACF6-5A38-1F10-043E-34E3E75DB818}" name="Source">
       <FILE id="U1h7bW" name="codelet.c" compile="1" resource="0" file="VST/Source/codelet.c"/>
