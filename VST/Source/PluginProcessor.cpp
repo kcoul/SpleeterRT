@@ -89,7 +89,8 @@ public:
 	}
 	MS5_1AI::~MS5_1AI()
 	{
-		Spleeter4StemsFree(msr);
+		if(msr)
+			Spleeter4StemsFree(msr);
 		if (coeffProvPtr[0])
 		{
 			for (int i = 0; i < 4; i++)

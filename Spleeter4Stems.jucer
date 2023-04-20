@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="bxzlY4" name="Spleeter4Stems" projectType="audioplug" pluginChannelConfigs="{2,8}"
-              pluginFormats="buildVST3" displaySplashScreen="1" jucerFormatVersion="1">
+              pluginFormats="buildVST3" displaySplashScreen="1" jucerFormatVersion="1"
+              companyName="james34602">
   <MAINGROUP id="Cu4AfW" name="Spleeter4Stems">
     <GROUP id="{7EAFACF6-5A38-1F10-043E-34E3E75DB818}" name="Source">
       <FILE id="U1h7bW" name="codelet.c" compile="1" resource="0" file="VST/Source/codelet.c"/>
@@ -54,9 +55,11 @@
             extraCompilerFlags="-I&quot;%MKLROOT%&quot;\include" externalLibraries="userenv.lib&#10;mkl_core.lib&#10;mkl_intel_lp64.lib&#10;mkl_sequential.lib">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" headerPath="&quot;C:\Program Files (x86)\Intel\oneAPI\mkl\2023.1.0\include&quot;"
-                       libraryPath="&quot;C:\Program Files (x86)\Intel\oneAPI\mkl\latest\lib\intel64&quot;"/>
+                       libraryPath="&quot;C:\Program Files (x86)\Intel\oneAPI\mkl\latest\lib\intel64&quot;"
+                       enablePluginBinaryCopyStep="1"/>
         <CONFIGURATION isDebug="0" name="Release" headerPath="&quot;C:\Program Files (x86)\Intel\oneAPI\mkl\2023.1.0\include&quot;"
-                       libraryPath="&quot;C:\Program Files (x86)\Intel\oneAPI\mkl\latest\lib\intel64&quot;"/>
+                       libraryPath="&quot;C:\Program Files (x86)\Intel\oneAPI\mkl\latest\lib\intel64&quot;"
+                       enablePluginBinaryCopyStep="1"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_basics" path="C:\Users\zendev\repos\JUCE\modules"/>
