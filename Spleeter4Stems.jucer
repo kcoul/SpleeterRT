@@ -77,9 +77,9 @@
         <MODULEPATH id="juce_opengl" path="../../juce"/>
       </MODULEPATHS>
     </XCODE_MAC>
-    <LINUX_MAKE targetFolder="Builds/LinuxMakefile" externalLibraries="mkl_core&#10;mkl_intel_lp64&#10;mkl_sequential">
+    <LINUX_MAKE targetFolder="Builds/LinuxMakefile" externalLibraries="openblas&#10;mkl_intel_lp64&#10;mkl_core&#10;mkl_sequential">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" libraryPath="~/intel/oneapi/mkl/latest/lib/intel64/"
+        <CONFIGURATION isDebug="1" name="Debug" libraryPath="~/OpenBLAS/lib/&#10;~/intel/oneapi/mkl/latest/lib/intel64/"
                        headerPath="~/intel/oneapi/mkl/latest/include/"/>
         <CONFIGURATION isDebug="0" name="Release" headerPath="~/intel/oneapi/mkl/latest/include/"
                        libraryPath="~/intel/oneapi/mkl/latest/lib/intel64/"/>
