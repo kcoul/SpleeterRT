@@ -1,5 +1,7 @@
 /Builds
 /Executable/.vs
+/Executable/input.wav
+/Executable/input_*
 /Executable/model.c
 /Executable/x64
 /JuceLibraryCode

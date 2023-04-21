@@ -677,6 +677,19 @@ extern void openblas_set_num_threads(int num_threads);
 #define MAX_PATH 512
 #endif
 //#define PLAINFILELOADING
+//strip_ext taken from https://stackoverflow.com/questions/43163677/how-do-i-strip-a-file-extension-from-a-string-in-c
+void strip_ext(char* fname) //TODO: Might require testing against PLAINFILELOADING depending on what that means
+{
+	char* end = fname + strlen(fname);
+
+	while (end > fname && *end != '.') {
+		--end;
+	}
+
+	if (end > fname) {
+		*end = '\0';
+	}
+}
 #include "model.c"
 int main(int argc, char *argv[])
 {
@@ -759,6 +772,7 @@ int main(int argc, char *argv[])
 	void *coeffProvPtr2 = lib2stem_loadCoefficients((void*)coeffQuantized);
 	void *coeffProvPtr1 = (void*)(((char*)coeffProvPtr2) + sizeof(spleeterCoeff));
 	char *filename = basenameM(fileIn);
+	strip_ext(filename);
 	int readcount = (unsigned int)ceil((float)totalPCMFrameCount / (float)FFTSIZE);
 	int finalSize = FFTSIZE * readcount + (FFTSIZE << 1);
 	float *splittedBuffer[2];
@@ -769,7 +783,7 @@ int main(int argc, char *argv[])
 		memcpy(splittedBuffer[1], splittedBuffer[0], finalSize * sizeof(float));
 	free(pSampleData);
 	// Spleeter
-	printf("Audio & model file and sample rate conversion takes: %1.14lf sec\n", get_wall_time() - startTimer);
+	printf("Audio & model file and sample rate conversion took: %1.14lf sec\n", get_wall_time() - startTimer);
 	float unaffectedWeight = 0.1f;
 	// STFT forward
 	OfflineSTFT *st = (OfflineSTFT*)malloc(sizeof(OfflineSTFT));
@@ -780,7 +794,7 @@ int main(int argc, char *argv[])
 	{
 		startTimer = get_wall_time();
 		processMT(framesThreading, analyseBinLimit, timeStep, spectralframeCount, coeffProvPtr1, unaffectedWeight, reL, imL, reR, imR, 0);
-		printf("Inference neural networks using %d cores takes %1.14lf sec\n", (int)framesThreading, get_wall_time() - startTimer);
+		printf("Inference neural networks using %d cores took %1.14lf sec\n", (int)framesThreading, get_wall_time() - startTimer);
 		float *out1L = 0, *out1R = 0;
 		size_t outLen = istft(st, reL, imL, reR, imR, spectralframeCount, &out1L, &out1R);
 		free(reL);
@@ -822,7 +836,7 @@ int main(int argc, char *argv[])
 		unsigned int fail = drwav_init_file_write(&pWav, filenameNew, &format, 0);
 		drwav_uint64 framesWritten = drwav_write_pcm_frames(&pWav, totalPCMFrameCount, sndBuf1);
 		drwav_uninit(&pWav);
-		printf("Saving file -> %s takes %1.14lf sec\n", filenameNew, get_wall_time() - startTimer);
+		printf("Saving file -> %s took %1.14lf sec\n", filenameNew, get_wall_time() - startTimer);
 		free(sndBuf1);
 		free(filenameNew);
 		// Acc
@@ -838,7 +852,7 @@ int main(int argc, char *argv[])
 		fail = drwav_init_file_write(&pWav, filenameNew, &format, 0);
 		framesWritten = drwav_write_pcm_frames(&pWav, totalPCMFrameCount, sndBuf2);
 		drwav_uninit(&pWav);
-		printf("Saving file -> %s takes %1.14lf sec\n", filenameNew, get_wall_time() - startTimer);
+		printf("Saving file -> %s took %1.14lf sec\n", filenameNew, get_wall_time() - startTimer);
 		free(filenameNew);
 		free(sndBuf2);
 	}
@@ -856,7 +870,7 @@ int main(int argc, char *argv[])
 		memcpy(orig_imR, imR, spectralframeCount * FFTSIZE * sizeof(float));
 		startTimer = get_wall_time();
 		processMT(framesThreading, analyseBinLimit, timeStep, spectralframeCount, coeffProvPtr2, unaffectedWeight, reL, imL, reR, imR, 1);
-		printf("Inference neural networks using %d cores takes %1.14lf sec\n", (int)framesThreading, get_wall_time() - startTimer);
+		printf("Inference neural networks using %d cores took %1.14lf sec\n", (int)framesThreading, get_wall_time() - startTimer);
 		for (i = 0; i < spectralframeCount * FFTSIZE; i++)
 		{
 			orig_reL[i] = orig_reL[i] - reL[i];
@@ -904,12 +918,12 @@ int main(int argc, char *argv[])
 		unsigned int fail = drwav_init_file_write(&pWav, filenameNew, &format, 0);
 		drwav_uint64 framesWritten = drwav_write_pcm_frames(&pWav, totalPCMFrameCount, sndBuf);
 		drwav_uninit(&pWav);
-		printf("Saving file -> %s takes %1.14lf sec\n", filenameNew, get_wall_time() - startTimer);
+		printf("Saving file -> %s took %1.14lf sec\n", filenameNew, get_wall_time() - startTimer);
 		free(filenameNew);
 
 		startTimer = get_wall_time();
 		processMT(framesThreading, analyseBinLimit, timeStep, spectralframeCount, coeffProvPtr1, unaffectedWeight, accvocal_reL, accvocal_imL, accvocal_reR, accvocal_imR, 0);
-		printf("Inference neural networks using %d cores takes %1.14lf sec\n", (int)framesThreading, get_wall_time() - startTimer);
+		printf("Inference neural networks using %d cores took %1.14lf sec\n", (int)framesThreading, get_wall_time() - startTimer);
 		float *out2L = 0, *out2R = 0;
 		outLen = istft(st, accvocal_reL, accvocal_imL, accvocal_reR, accvocal_imR, spectralframeCount, &out2L, &out2R);
 		free(accvocal_reL);
@@ -944,7 +958,7 @@ int main(int argc, char *argv[])
 		fail = drwav_init_file_write(&pWav, filenameNew, &format, 0);
 		framesWritten = drwav_write_pcm_frames(&pWav, totalPCMFrameCount, sndBuf);
 		drwav_uninit(&pWav);
-		printf("Saving file -> %s takes %1.14lf sec\n", filenameNew, get_wall_time() - startTimer);
+		printf("Saving file -> %s took %1.14lf sec\n", filenameNew, get_wall_time() - startTimer);
 		free(filenameNew);
 
 		ob1[0] = out2L;
@@ -962,7 +976,7 @@ int main(int argc, char *argv[])
 		fail = drwav_init_file_write(&pWav, filenameNew, &format, 0);
 		framesWritten = drwav_write_pcm_frames(&pWav, totalPCMFrameCount, sndBuf);
 		drwav_uninit(&pWav);
-		printf("Saving file -> %s takes %1.14lf sec\n", filenameNew, get_wall_time() - startTimer);
+		printf("Saving file -> %s took %1.14lf sec\n", filenameNew, get_wall_time() - startTimer);
 		free(filenameNew);
 		free(out2L);
 		free(out2R);
