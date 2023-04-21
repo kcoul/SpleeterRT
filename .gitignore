@@ -1,5 +1,7 @@
 /Builds
+/Executable/.idea
 /Executable/.vs
+/Executable/cmake-build-*
 /Executable/input.wav
 /Executable/input_*
 /Executable/model.c
