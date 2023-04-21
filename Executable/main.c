@@ -206,7 +206,7 @@ void decompressResamplerMQ(const double y[701], float *yi)
 		yi[k] = xloc * (xloc * (xloc * coefs[low_i] + coefs[low_i + 700]) + coefs[low_i + 1400]) + coefs[low_i + 2100];
 	}
 }
-#include "libsamplerate/samplerate.h"
+#include "samplerate.h"
 void JamesDSPOfflineResampling(float const *in, float *out, size_t lenIn, size_t lenOut, int channels, double src_ratio)
 {
 	if (lenOut == lenIn && lenIn == 1)
