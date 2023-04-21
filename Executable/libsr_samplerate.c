@@ -11,10 +11,10 @@
 #include	<string.h>
 #include	<math.h>
 
-#include	"src_config.h"
+#include	"libsr_src_config.h"
 
-#include	"samplerate.h"
-#include	"common.h"
+#include	"libsr_samplerate.h"
+#include	"libsr_common.h"
 
 SRC_STATE *src_new (int converter_type, int channels, int *error)
 {	SRC_PRIVATE	*psrc ;

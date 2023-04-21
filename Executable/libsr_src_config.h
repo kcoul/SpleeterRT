@@ -8,5 +8,5 @@
 
 // allow config.h to be optional
 #ifdef HAVE_CONFIG_H
-#include "config.h"
+#include "libsr_config.h"
 #endif

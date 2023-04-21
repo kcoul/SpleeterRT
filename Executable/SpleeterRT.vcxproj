@@ -23,22 +23,23 @@
     <ClCompile Include="cpthread.c" />
     <ClCompile Include="gemm.c" />
     <ClCompile Include="im2col_dilated.c" />
+    <ClCompile Include="libsr_samplerate.c" />
+    <ClCompile Include="libsr_src_sinc.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="samplerate.c" />
     <ClCompile Include="spleeter.c" />
-    <ClCompile Include="src_sinc.c" />
     <ClCompile Include="stftFix.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\dr_flac.h" />
-    <ClInclude Include="..\dr_wav.h" />
     <ClInclude Include="codelet.h" />
-    <ClInclude Include="common.h" />
     <ClInclude Include="conv_util.h" />
     <ClInclude Include="cpthread.h" />
-    <ClInclude Include="samplerate.h" />
+    <ClInclude Include="dr_flac.h" />
+    <ClInclude Include="dr_mp3.h" />
+    <ClInclude Include="dr_wav.h" />
+    <ClInclude Include="libsr_common.h" />
+    <ClInclude Include="libsr_samplerate.h" />
+    <ClInclude Include="libsr_src_config.h" />
     <ClInclude Include="spleeter.h" />
-    <ClInclude Include="src_config.h" />
     <ClInclude Include="stftFix.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

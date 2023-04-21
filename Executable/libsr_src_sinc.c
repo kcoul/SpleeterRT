@@ -11,8 +11,8 @@
 #include <string.h>
 #include <math.h>
 
-#include "src_config.h"
-#include "common.h"
+#include "libsr_src_config.h"
+#include "libsr_common.h"
 
 #define	SINC_MAGIC_MARKER	MAKE_MAGIC (' ', 's', 'i', 'n', 'c', ' ')
 
