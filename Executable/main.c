@@ -245,19 +245,19 @@ float* loadAudioFile(char *filename, double targetFs, unsigned int *channels, dr
     }
 	if (pSampleData == NULL)
 	{
-		printf("Error opening and reading WAV file");
+		printf("Error opening and reading WAV file\n");
 		return 0;
 	}
 	// Sanity check
 	if (*channels < 1)
 	{
-		printf("Invalid audio channels count");
+		printf("Invalid audio channels count\n");
 		free(pSampleData);
 		return 0;
 	}
 	if ((*totalPCMFrameCount <= 0) || (*totalPCMFrameCount <= 0))
 	{
-		printf("Invalid audio sample rate / frame count");
+		printf("Invalid audio sample rate / frame count\n");
 		free(pSampleData);
 		return 0;
 	}
@@ -717,7 +717,7 @@ int main(int argc, char *argv[])
 	if (argc < 5)
 	{
 		free(decompressedCoefficients);
-		printf("Invalid program arguments.\nExample:\n%s spawnNthreads timeStep analyseBinLimit stems audioFile\n%s 3 512 1024 3 musicFile.flac\n", argv[0], argv[0]);
+		printf("Invalid program arguments.\nExample:\n%s spawnNthreads timeStep analyseBinLimit stems audioFile\n%s 3 512 1024 3 input.wav\n", argv[0], argv[0]);
 		return -2;
 	}
 	int val0 = atoi(argv[1]);

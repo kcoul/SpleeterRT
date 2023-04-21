@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46326B9629F32135005E7404 /* libsr_samplerate.c in Sources */ = {isa = PBXBuildFile; fileRef = 46326B9229F32135005E7404 /* libsr_samplerate.c */; };
+		46326B9729F32135005E7404 /* libsr_src_sinc.c in Sources */ = {isa = PBXBuildFile; fileRef = 46326B9429F32135005E7404 /* libsr_src_sinc.c */; };
 		4635B22429F30E5C002A7822 /* gemm.c in Sources */ = {isa = PBXBuildFile; fileRef = 4635B21529F30E5C002A7822 /* gemm.c */; };
 		4635B22529F30E5C002A7822 /* spleeter.c in Sources */ = {isa = PBXBuildFile; fileRef = 4635B21929F30E5C002A7822 /* spleeter.c */; };
 		4635B22629F30E5C002A7822 /* im2col_dilated.c in Sources */ = {isa = PBXBuildFile; fileRef = 4635B21A29F30E5C002A7822 /* im2col_dilated.c */; };
@@ -15,8 +17,6 @@
 		4635B22929F30E5C002A7822 /* codelet.c in Sources */ = {isa = PBXBuildFile; fileRef = 4635B22029F30E5C002A7822 /* codelet.c */; };
 		4635B22A29F30E5C002A7822 /* stftFix.c in Sources */ = {isa = PBXBuildFile; fileRef = 4635B22229F30E5C002A7822 /* stftFix.c */; };
 		4635B22D29F30E8E002A7822 /* model.c in Sources */ = {isa = PBXBuildFile; fileRef = 4635B22C29F30E8E002A7822 /* model.c */; };
-		4635B23329F30FF9002A7822 /* samplerate.c in Sources */ = {isa = PBXBuildFile; fileRef = 4635B23229F30FF9002A7822 /* samplerate.c */; };
-		4635B23629F30FFF002A7822 /* src_sinc.c in Sources */ = {isa = PBXBuildFile; fileRef = 4635B23529F30FFF002A7822 /* src_sinc.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +32,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		46326B9129F32135005E7404 /* libsr_samplerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libsr_samplerate.h; sourceTree = "<group>"; };
+		46326B9229F32135005E7404 /* libsr_samplerate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = libsr_samplerate.c; sourceTree = "<group>"; };
+		46326B9329F32135005E7404 /* libsr_src_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libsr_src_config.h; sourceTree = "<group>"; };
+		46326B9429F32135005E7404 /* libsr_src_sinc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = libsr_src_sinc.c; sourceTree = "<group>"; };
+		46326B9529F32135005E7404 /* libsr_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libsr_common.h; sourceTree = "<group>"; };
 		4635B20729F30DF6002A7822 /* SpleeterRT */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SpleeterRT; sourceTree = BUILT_PRODUCTS_DIR; };
 		4635B21429F30E5C002A7822 /* spleeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spleeter.h; sourceTree = "<group>"; };
 		4635B21529F30E5C002A7822 /* gemm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gemm.c; sourceTree = "<group>"; };
@@ -49,11 +54,6 @@
 		4635B22229F30E5C002A7822 /* stftFix.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stftFix.c; sourceTree = "<group>"; };
 		4635B22329F30E5C002A7822 /* dr_flac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dr_flac.h; sourceTree = "<group>"; };
 		4635B22C29F30E8E002A7822 /* model.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = model.c; sourceTree = "<group>"; };
-		4635B23229F30FF9002A7822 /* samplerate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = samplerate.c; sourceTree = "<group>"; };
-		4635B23529F30FFF002A7822 /* src_sinc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = src_sinc.c; sourceTree = "<group>"; };
-		4635B23929F3103A002A7822 /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
-		4635B23A29F3103A002A7822 /* src_config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = src_config.h; sourceTree = "<group>"; };
-		4635B23B29F3103A002A7822 /* samplerate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = samplerate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,11 +70,6 @@
 		4635B1FE29F30DF6002A7822 = {
 			isa = PBXGroup;
 			children = (
-				4635B23929F3103A002A7822 /* common.h */,
-				4635B23B29F3103A002A7822 /* samplerate.h */,
-				4635B23A29F3103A002A7822 /* src_config.h */,
-				4635B23529F30FFF002A7822 /* src_sinc.c */,
-				4635B23229F30FF9002A7822 /* samplerate.c */,
 				4635B22029F30E5C002A7822 /* codelet.c */,
 				4635B21D29F30E5C002A7822 /* codelet.h */,
 				4635B21F29F30E5C002A7822 /* conv_util.h */,
@@ -85,6 +80,11 @@
 				4635B22129F30E5C002A7822 /* dr_wav.h */,
 				4635B21529F30E5C002A7822 /* gemm.c */,
 				4635B21A29F30E5C002A7822 /* im2col_dilated.c */,
+				46326B9529F32135005E7404 /* libsr_common.h */,
+				46326B9229F32135005E7404 /* libsr_samplerate.c */,
+				46326B9129F32135005E7404 /* libsr_samplerate.h */,
+				46326B9329F32135005E7404 /* libsr_src_config.h */,
+				46326B9429F32135005E7404 /* libsr_src_sinc.c */,
 				4635B21E29F30E5C002A7822 /* main.c */,
 				4635B22C29F30E8E002A7822 /* model.c */,
 				4635B21929F30E5C002A7822 /* spleeter.c */,
@@ -164,11 +164,11 @@
 				4635B22A29F30E5C002A7822 /* stftFix.c in Sources */,
 				4635B22829F30E5C002A7822 /* main.c in Sources */,
 				4635B22429F30E5C002A7822 /* gemm.c in Sources */,
+				46326B9629F32135005E7404 /* libsr_samplerate.c in Sources */,
+				46326B9729F32135005E7404 /* libsr_src_sinc.c in Sources */,
 				4635B22629F30E5C002A7822 /* im2col_dilated.c in Sources */,
 				4635B22729F30E5C002A7822 /* cpthread.c in Sources */,
 				4635B22529F30E5C002A7822 /* spleeter.c in Sources */,
-				4635B23329F30FF9002A7822 /* samplerate.c in Sources */,
-				4635B23629F30FFF002A7822 /* src_sinc.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
