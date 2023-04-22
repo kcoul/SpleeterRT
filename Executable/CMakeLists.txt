@@ -14,10 +14,13 @@ add_executable(${TargetName}
         stftFix.c)
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
-    target_include_directories(${TargetName} PUBLIC "~/intel/oneapi/mkl/latest/include/")
+    target_include_directories(${TargetName} PUBLIC "~/intel/oneapi/mkl/latest/include")
     target_link_directories(${TargetName} PUBLIC
-            "~/intel/oneapi/mkl/latest/lib/intel64/"
-            "~/OpenBLAS/lib/")
+            "~/intel/oneapi/mkl/latest/lib/intel64"
+            "~/OpenBLAS/lib")
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+    target_include_directories(${TargetName} PUBLIC "/opt/intel/oneapi/mkl/latest/include")
+    target_link_directories(${TargetName} PUBLIC "/opt/intel/oneapi/mkl/latest/lib")
 elseif (CMAKE_SYSTEM_NAME STREQUAL "Windows")
     target_include_directories(${TargetName} PUBLIC "C:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\latest\\include")
     target_link_directories(${TargetName} PUBLIC
