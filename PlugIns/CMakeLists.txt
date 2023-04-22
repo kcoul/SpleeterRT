@@ -130,6 +130,10 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
     target_link_directories(${TargetName} PUBLIC
             "~/intel/oneapi/mkl/latest/lib/intel64/"
             "~/OpenBLAS/lib/")
+elseif (CMAKE_SYSTEM_NAME STREQUAL "Windows")
+    target_include_directories(${TargetName} PUBLIC "C:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\latest\\include")
+    target_link_directories(${TargetName} PUBLIC
+            "C:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\latest\\lib\\intel64")
 endif()
 
 target_link_libraries("${TargetName}"
@@ -141,11 +145,18 @@ target_link_libraries("${TargetName}"
         juce::juce_recommended_lto_flags
         juce::juce_recommended_warning_flags
         #Linking order matters! Alphabetic often will not work here.
-        openblas
         mkl_intel_lp64 #Depends on mkl_core
         mkl_core
         mkl_sequential
         )
+
+if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    target_link_libraries(${TargetName} PUBLIC
+            openblas)
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+    target_link_libraries(${TargetName} PUBLIC
+            userenv)
+endif()
 
 # BUILD_TESTING is ON by default
 # include(CTest) does this too, but adds tons of targets we don't want
