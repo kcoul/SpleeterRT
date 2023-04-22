@@ -1,3 +1,7 @@
+/.idea
+/.vs
+.DS_Store
+/cmake-build-*
 /Builds
 /Executable/.idea
 /Executable/.vs
@@ -7,4 +11,5 @@
 /Executable/model.c
 /Executable/x64
 /JuceLibraryCode
-.DS_Store
+/PlugIns/Builds
+/PlugIns/JuceLibraryCode

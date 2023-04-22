@@ -153,3 +153,6 @@ Other than the project main components are GPL-licensed, I don't know much about
 Deezer, of cource, this repository won't happen without their great model.
 
 Intel MKL, without MKL, the convolution operation run 40x slower.
+
+## Debugging in Linux
+Follow https://www.jetbrains.com/help/clion/attaching-to-local-process.html#attach-to-local

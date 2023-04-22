@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 3.24)
+set(TargetName "SpleeterRTBin")
 
-project(SpleeterRT)
+project(${TargetName} VERSION 0.0.1)
 
-add_executable(SpleeterRT
+add_executable(${TargetName}
         codelet.c
         cpthread.c
         gemm.c
@@ -14,13 +14,13 @@ add_executable(SpleeterRT
         stftFix.c)
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
-    target_include_directories(SpleeterRT PUBLIC "~/intel/oneapi/mkl/latest/include/")
-    target_link_directories(SpleeterRT PUBLIC
+    target_include_directories(${TargetName} PUBLIC "~/intel/oneapi/mkl/latest/include/")
+    target_link_directories(${TargetName} PUBLIC
             "~/intel/oneapi/mkl/latest/lib/intel64/"
             "~/OpenBLAS/lib/")
 endif()
 
-target_link_libraries(SpleeterRT PUBLIC
+target_link_libraries(${TargetName} PUBLIC
         #Linking order matters! Alphabetic often will not work here.
         openblas
         mkl_intel_lp64 #Depends on mkl_core
