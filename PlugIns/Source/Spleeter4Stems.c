@@ -227,6 +227,7 @@ void writeNChannelsImg2Folder(float *x, int ch, int w, int h, char *foldername, 
 {
 	int nError = 0;
 #if defined(_WIN32)
+#include <direct.h>
 	nError = _mkdir(foldername); // can be used on Windows
 #else
 	mode_t nMode = 0733; // UNIX style permissions
