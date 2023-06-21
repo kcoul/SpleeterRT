@@ -4,7 +4,7 @@ AI Source separator written in C running a U-Net model trained by Deezer, separa
 ## Runtime Notes 
 
 ### Plugins/SpleeterRTPlug
-- Single GUI Slider with range {0, 3} controls number of stems output (verify)
+- Single GUI Slider with range {0, 3} controls number of stems output (TODO: verify all settings)
 - Remember "VBAD" for plugin output at max numStems == slider = 3: (4x Stereo = 8 channels):
 - Vocals (1, 2)
 - Bass (3, 4)
